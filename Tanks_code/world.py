@@ -1,5 +1,4 @@
 import random
-
 import texture
 from tkinter import NW
 from random import randint, choice
@@ -8,7 +7,7 @@ GROUND = 'g'
 WATER = 'w'
 CONCRETE = 'c'
 BRICK = 'b'
-MESSLE = 'm'
+MISSIL = 'm'
 PETROL = 'p'
 
 BLOCK_SIZE = 64
@@ -52,7 +51,7 @@ def create_map(rows = 50, cols = 50):
             if i == 0 or j == 0 or i == rows - 1 or j == cols - 1:
                 block = CONCRETE
             elif randint(1, 100) <= 30:
-                block = choice([BRICK, WATER, CONCRETE, MESSLE, PETROL])
+                block = choice([BRICK, WATER, CONCRETE, MISSIL, PETROL])
             cell = _Cell(_canvas, block, j * BLOCK_SIZE, i * BLOCK_SIZE)
             row.append(cell)
         _map.append(row)
@@ -163,7 +162,7 @@ class _Cell:
 
     def take(self):
         block = self.get_block()
-        if block == MESSLE or block == PETROL:
+        if block == MISSIL or block == PETROL:
             self.set_block(GROUND)
             return block
         else:

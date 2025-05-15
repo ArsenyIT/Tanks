@@ -275,8 +275,8 @@ class Tank(Unit):
     def _on_map_collision(self, details):
         if world.WATER in details and len(details) == 1:
             self._set_water_speed()
-        elif world.MESSLE in details:
-            pos = details[world.MESSLE]
+        elif world.MISSIL in details:
+            pos = details[world.MISSIL]
             if world.take(pos['row'], pos['col']) != world.AIR:
                 self._take_ammo()
         elif world.PETROL in details:
