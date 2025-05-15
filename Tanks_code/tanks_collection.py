@@ -20,19 +20,8 @@ def initialze(canv):
     enemy = spawn(True).set_target(player)
     spawn(True).set_target(player)
 
-    id_screen_text = _canvas.create_text(10, 10, text = _get_screen_text(), font = ('TkDefaultFont', 20), fill = _get_color(), anchor = NW)
-
+    id_screen_text = _canvas.create_text(10, 10, text = _get_screen_text(), font = ('TkDefaultFont', 20), fill = "white", anchor = NW)
     print(_tanks)
-
-def _update_color():
-    _canvas.itemconfig(id_screen_text, fill = _get_color())
-
-def _get_color():
-    if get_player().is_destroyed():
-        return 'red'
-    if len(_tanks) == 1:
-        return 'yellow'
-    return 'white'.format(len(_tanks) - 1)
 
 def _update_screen_text():
     _canvas.itemconfig(id_screen_text, text = _get_screen_text())
@@ -48,9 +37,6 @@ def get_player():
     return _tanks[0]
 
 def update():
-    #for tank in _tanks:
-    #    tank.update()
-    #    check_collishion(tank)
     _update_screen_text()
     start = len(_tanks) - 1
     for i in range(start, -1, -1):
@@ -68,16 +54,6 @@ def check_collishion(tank):
         if tank.intersect(other_tank):
             return True
     return False
-
-    # def spawn_enemy():
-    #     pos_x = randint(200, 800)
-    #     pos_y = randint(200, 600)
-    #
-    #     t = Tank(_canvas, x=pos_x, y=pos_y, speed=1)
-    #     if not check_collishion(t):
-    #         t.set_target(get_player())
-    #         _tanks.append(t)
-    #         return True
 
 def spawn(is_bot=True):
     cols = world.get_cols()
