@@ -298,7 +298,7 @@ class Tank(Unit):
 
 class Missile(Unit):
     def __init__(self, canvas, owner):
-        super().__init__(canvas, owner.get_x(), owner.get_y(), 6, 20, 100000000000, False, 'missile_up')
+        super().__init__(canvas, owner.get_x(), owner.get_y(), 6, 20, 1000000000000, False, 'missile_up')
         self._owner = owner
         self._forward_image = 'missile_up'
         self._backward_image = 'missile_down'
